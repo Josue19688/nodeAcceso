@@ -7,6 +7,9 @@ const UsuarioSchema = Schema({
         type: String,
         required: true
     },
+    imagen:{
+        type:String
+    },
     email: {
         type: String,
         required: true,

@@ -35,6 +35,9 @@ class Server {
         this.app.use('/api/mensajes', require('../router/mensajes'));
         this.app.use('/api/novedades',require('../router/novedades'));
         this.app.use('/api/visitas',require('../router/visitas'));
+        this.app.use('/api/archivo',require('../router/archivo'));
+        this.app.use('/api/todo',require('../router/busquedas'));
+        this.app.use('/api/upload', require('../router/uploads'));
     }
 
     configurarSockets() {
