@@ -41,12 +41,13 @@ const actualizarImagen = async(tipo, id, nombreArchivo) => {
                 return false;
             }
 
+            console.log(nombreArchivo);
             pathViejo = `./uploads/archivo/${archivo.images }`;
             borrarImagen( pathViejo );
 
             archivo.images = nombreArchivo;
             await archivo.save();
-            console.log(archivo);
+            //console.log(archivo);
             return true;
 
         break;
