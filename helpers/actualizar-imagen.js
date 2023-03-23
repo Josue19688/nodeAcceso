@@ -32,7 +32,7 @@ const actualizarImagen = async(tipo, id, nombreArchivo) => {
             await usuario.save();
             return true;
 
-        break;
+            break;
         case 'archivo':
 
             const archivo = await Archivo.findById(id);
@@ -50,7 +50,7 @@ const actualizarImagen = async(tipo, id, nombreArchivo) => {
             //console.log(archivo);
             return true;
 
-        break;
+            break;
     }
 
 
