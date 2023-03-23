@@ -29,7 +29,7 @@ const getUsuarios = async()=>{
     return usuarios;
 }
 
-<<<<<<< HEAD
+
 const guardarMensajes = async (payload)=>{
    try {
     const mensaje = new Mensaje(payload);
@@ -40,17 +40,12 @@ const guardarMensajes = async (payload)=>{
     return false;
    }
 }
-=======
 
->>>>>>> 531b4a6ce59c919317d9378dee1c0a5603af72ef
 
 module.exports = {
     usuarioConectado,
     usuarioDesconectado,
-<<<<<<< HEAD
     getUsuarios,
     guardarMensajes
-=======
-    getUsuarios
->>>>>>> 531b4a6ce59c919317d9378dee1c0a5603af72ef
+
 }

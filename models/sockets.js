@@ -1,9 +1,6 @@
 const { comprobarJWT } = require('../helpers/jwt');
-<<<<<<< HEAD
+
 const { usuarioConectado, usuarioDesconectado, getUsuarios, guardarMensajes } = require('../controllers/sockets');
-=======
-const { usuarioConectado, usuarioDesconectado, getUsuarios } = require('../controllers/sockets');
->>>>>>> 531b4a6ce59c919317d9378dee1c0a5603af72ef
 
 class Sockets {
 
@@ -19,11 +16,9 @@ class Sockets {
         this.io.on('connection', async( socket ) => {
 
             const [ valido, uid ] = comprobarJWT( socket.handshake.query['x-token']  );
-<<<<<<< HEAD
+
            
-=======
-            console.log(socket.handshake.query['x-token'])
->>>>>>> 531b4a6ce59c919317d9378dee1c0a5603af72ef
+
 
             if ( !valido ) {
               
