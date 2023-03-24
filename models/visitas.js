@@ -34,6 +34,8 @@ const VisitaSchema = Schema({
     vehiculo:{
         type:String
     }
+},{
+    timestamps: true
 });
 
 

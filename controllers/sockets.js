@@ -1,5 +1,7 @@
 const Usuario = require('../models/usuario');
 const Mensaje = require('../models/mensajes');
+const Novedad = require('../models/novedades');
+const Visita = require('../models/visitas');
 
 const usuarioConectado = async( uid ) => {
 
@@ -25,8 +27,39 @@ const getUsuarios = async()=>{
     const usuarios = await Usuario
         .find()
         .sort('-online');
-        console.log(usuarios)
     return usuarios;
+}
+
+const getNovedades =  async()=>{
+    const novedad = await Novedad.find();
+    return novedad;
+}
+
+const guardarNovedad= async(payload)=>{
+    try {
+        const novedad = new Novedad(payload);
+        await novedad.save();
+
+        return novedad;
+    } catch (error) {
+        return false;
+    }
+}
+
+const getVisitas=async()=>{
+    const visita = await Visita.find();
+    return visita;
+}
+
+const guardarVisita = async(payload)=>{
+    try {
+        const visita = new Visita(payload);
+        await visita.save();
+       
+        return visita;
+    } catch (error) {
+        return false;
+    }
 }
 
 
@@ -46,6 +79,9 @@ module.exports = {
     usuarioConectado,
     usuarioDesconectado,
     getUsuarios,
-    guardarMensajes
-
+    guardarMensajes,
+    guardarNovedad,
+    getNovedades,
+    getVisitas,
+    guardarVisita
 }

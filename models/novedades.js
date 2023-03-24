@@ -28,6 +28,8 @@ const NovedadesSchema = Schema({
     images:[{
         type:String
     }],
+},{
+    timestamps: true
 });
 
 

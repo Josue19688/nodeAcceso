@@ -1,6 +1,14 @@
 const { comprobarJWT } = require('../helpers/jwt');
 
-const { usuarioConectado, usuarioDesconectado, getUsuarios, guardarMensajes } = require('../controllers/sockets');
+const { usuarioConectado, 
+    usuarioDesconectado, 
+    getUsuarios, 
+    guardarMensajes,
+    getNovedades,
+    getVisitas,
+    guardarNovedad,
+    guardarVisita
+ } = require('../controllers/sockets');
 
 class Sockets {
 
@@ -41,15 +49,26 @@ class Sockets {
                 const mensaje = await  guardarMensajes(payload);
                 this.io.to(payload.para).emit('mensaje-personal',mensaje);
                 this.io.to(payload.de).emit('mensaje-personal',mensaje);
+            });
+
+            //Manejo de novedades
+            socket.on('mensaje-novedad',async(payload)=>{
+                 await guardarNovedad(payload);
+            })
+
+            //Manejo de visitas
+            socket.on('mensaje-visitas',async(payload)=>{
+                console.log(payload)
+                await guardarVisita(payload);
             })
 
 
 
             //Emitir todos los usuarios conectados
             this.io.emit('lista-usuarios', await getUsuarios());
-
-
-
+            this.io.emit('lista-novedad', await getNovedades());
+            this.io.emit('lista-visitas',await getVisitas());
+           
            
             socket.on('disconnect', async() => {
                 await usuarioDesconectado( uid );
