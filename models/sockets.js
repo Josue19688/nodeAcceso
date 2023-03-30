@@ -53,13 +53,15 @@ class Sockets {
 
             //Manejo de novedades
             socket.on('mensaje-novedad',async(payload)=>{
-                 await guardarNovedad(payload);
+                const novedad = await guardarNovedad(payload);
+                this.io.emit('mensaje-novedad',novedad);
             })
 
             //Manejo de visitas
             socket.on('mensaje-visitas',async(payload)=>{
-                console.log(payload)
-                await guardarVisita(payload);
+                const visita =await guardarVisita(payload);
+                this.io.emit('mensaje-visitas',visita);
+               
             })
 
 

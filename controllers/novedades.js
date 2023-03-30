@@ -32,12 +32,15 @@ const getNovedad =  async(req, res=response)=>{
 
 const getNovedades =  async(req, res=response)=>{
    
+    const {limite=5,desde=0}= req.query;
 
     try {
        
         const [total, novedad] = await Promise.all([
             Novedad.countDocuments(),
             Novedad.find()
+            .skip(Number(desde))
+            .limit(Number(limite))
         ]);
 
        
